@@ -88,7 +88,6 @@ Security: ScriptProperties API / シンプルな認証プロトコル
 
 ---
 
-
 ## 📂 ファイル構成とシート役割
 
 ### ファイル / シート名	役割
@@ -109,7 +108,6 @@ Security: ScriptProperties API / シンプルな認証プロトコル
 ![Execution Log](Images/Log.png)
 
 ---
-
 
 ## 📈 今後の展望（Next Steps）
 
@@ -133,9 +131,26 @@ Security: ScriptProperties API / シンプルな認証プロトコル
 
 ---
 
+###✨ Visual Intelligence: Interactive Dashboard
+
+index.html は、AIによる高度な分析結果を、専門的な知識がないユーザーでも直感的に理解できるように設計された専用インターフェースです。
+
+公平なアクセスの提供:
+スプレッドシートの権限を直接付与することなく、特定の認証情報を知るユーザー（クライアント）だけが安全に最新のインサイトへアクセスできる仕組みを採用しています。
+
+デモ用アカウントの開示:
+本リポジトリの機能を公平に、かつ即座に検証いただけるよう、以下のデモ用ログイン情報を設定済みです。
+
+User ID: demo
+
+Password: demo
+
+※このログイン情報は index.html 内の checkLogin 関数にて、デモ目的として公開されています。
+    
 ## 🔐 認証ロジックの分析：demo / demo
 
 コード内の checkLogin 関数に記述されているこの部分は、**「簡易的なゲートウェイ」**として非常に賢い選択です。
+
 JavaScript
 
 if (user === 'demo' && pass === 'demo') { ... }
