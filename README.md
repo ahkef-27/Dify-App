@@ -1,5 +1,20 @@
 # Dify-App
 
+### 🔗 Live Demo (公開検証用)
+
+https://script.google.com/macros/s/AKfycbwk7pm3Eb7vp0Hj29NweuC1AzqdjcZjCu01OnIs4nZ1gaUiOZexTrRyrVCyQ6G48SI/exec
+
+User ID: demo
+
+Password: demo
+
+## 🛠 Current Status
+
+https://docs.google.com/spreadsheets/d/1KqABS5Blonfm2scCW89rhnLx7ChabJR5iRGuiJ9tygA/edit?gid=1107744585#gid=1107744585
+
+現在、本システム上で様々な検索ワードを設定し、動作検証と分析精度の確認をリアルタイムで進めています。実際の運用データに基づき、ロジックの微調整を継続的に行っている「生きたプロジェクト」です。
+
+
 ## Dify-App: Auto Research & Analysis System
 ## Web情報収集・LLM分析・可視化を統合した自律型インテリジェンス・プラットフォーム
 
