@@ -92,15 +92,19 @@ Security: ScriptProperties API / シンプルな認証プロトコル
 
 ### ファイル / シート名	役割
 ### main.gs	リサーチ・分析・通知を司るコアロジック
-### index.html	モダンなUIを備えた、分析結果のWebダッシュボード
-### 設定	検索キーワードや実行頻度の管理
-### AI分析	Difyが生成した構造化データの蓄積
-### 生データ	収集したWeb記事のバックアップ ＆ 重複チェック用DB
-### ログ	実行状況およびエラー履歴の管理
 
+### index.html	モダンなUIを備えた、分析結果のWebダッシュボード
+
+### 設定	検索キーワードや実行頻度の管理
 ![Execution Log](Images/Settings.png)
+
+### AI分析	Difyが生成した構造化データの蓄積
 ![Execution Log](Images/Analysis.png)
+
+### 生データ	収集したWeb記事のバックアップ ＆ 重複チェック用DB
 ![Execution Log](Images/Data.png)
+
+### ログ	実行状況およびエラー履歴の管理
 ![Execution Log](Images/Log.png)
 
 ---
