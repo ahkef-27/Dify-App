@@ -94,7 +94,11 @@ Security: ScriptProperties API / シンプルな認証プロトコル
 ### main.gs	リサーチ・分析・通知を司るコアロジック
 
 ### index.html	モダンなUIを備えた、分析結果のWebダッシュボード
+
+### ログイン画面
 ![Execution Log](Images/Login.png)
+
+### ダッシュボード画面
 ![Execution Log](Images/Result.png)
 
 ### 設定	検索キーワードや実行頻度の管理
