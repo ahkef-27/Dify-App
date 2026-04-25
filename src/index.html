@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <base target="_top">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <style>
+      /* 全体レイアウト：清潔感のある背景色を設定 */
+      body { background-color: #f8f9fa; }
+
+      /* データ表示エリア：視認性とモダンさを両立したカードデザイン */
+      #data-area {
+        border-radius: 20px !important; /* 角を丸くし、親しみやすいUIに */
+        border: 1.5px solid rgba(40, 167, 69, 0.2) !important;
+        padding: 1.5rem !important;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.05); /* 軽い影で立体感を演出 */
+      }
+
+      /* ログイン画面：グラデーションによるブランド感を演出 */
+      #login-screen {
+        position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        z-index: 9999; display: flex; align-items: center; justify-content: center;
+      }
+      .login-card { width: 100%; max-width: 400px; padding: 30px; border-radius: 20px; box-shadow: 0 10px 25px rgba(0,0,0,0.2); }
+      #main-content { 
+        display: none; 
+        padding: 20px 20px; 
+        max-width: 1200px;  /* 画面を広く使う */
+        margin: 0 auto;
+      }
+      .dashboard-card { border-radius: 15px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); border: none; padding: 1.0rem !important; }
+
+      .chart-container {
+        display: flex;
+        justify-content: center; /* 左右中央に寄せる */
+        align-items: center;    /* 上下中央に寄せる */
+        width: 100%;
+        margin-top: -10px;
+      }
+
+      /* セパレーター：デザインのアクセントとして丸みのあるラインを採用 */
+      #sentiment-chart { 
+      width: 100%;
+      max-width: 320px; /* グラフが広がりすぎないように「横幅の最大値」を固定 */
+      height: 220px;
+      }
+
+      /* styleタグ内に追加 */
+      capsule-line {
+      border: none;
+      height: 6px;
+      background-color: #28a745;
+      border-radius: 10px; /* ここで「丸」にします */
+      width: 40%;
+      margin: 20px auto !important;
+      opacity: 0.2;
+      }
+
+      /* styleタグ内に追加 */
+      hr.rounded-dots {
+        border: none;
+        border-top: 5px dotted #28a745; /* 点線を太くして「丸」に見せる */
+        color: #fff;
+        background-color: transparent;
+        height: 0;
+        width: 50%; /* 少し短くして中央に寄せるとオシャレ */
+        margin: 10px auto !important;
+        opacity: 0.3; /* 少し透かすと上品です */
+      }
+    </style>
+  </head>
+  <body>
+
+    <div id="login-screen">
+      <div class="card login-card text-center">
+        <h3 class="mb-4">Client Login</h3>
+        <div class="mb-3">
+          <input type="text" id="user" class="form-control" placeholder="ユーザー名">
+        </div>
+        <div class="mb-3">
+          <input type="password" id="pass" class="form-control" placeholder="パスワード">
+        </div>
+        <button class="btn btn-primary w-100" onclick="checkLogin()">ログイン</button>
+        <p id="error-msg" class="text-danger mt-3" style="display:none;">認証情報が正しくありません</p>
+      </div>
+    </div>
+
+    <div id="main-content" class="container">
+      <div class="card dashboard-card p-4 text-center">
+        <h1 class="display-5 text-primary mb-4">AIリサーチ・ダッシュボード</h1>
+    
+        <div id="data-area" class="alert alert-success p-4 mb-0" style="border-radius: 25px !important;">
+          <div id="analysis-text">データを読み込んでいます...</div>
+      
+          <hr class="capsule-line my-4"> 
+          <div class="chart-container">
+            <div id="sentiment-chart"></div>
+          </div>
+
+          <div id="trend-area" class="mt-3"></div>
+        </div>
+        <button class="btn btn-outline-secondary mt-4" onclick="logout()">ログアウト</button>
+      </div>
+    </div>
+
+    <script>
+    // Google Chartsの初期化
+    google.charts.load('current', {'packages':['corechart']});
+
+    function checkLogin() {
+      const user = document.getElementById('user').value;
+      const pass = document.getElementById('pass').value;
+      if (user === 'demo' && pass === 'demo') {
+        document.getElementById('login-screen').style.display = 'none';
+        document.getElementById('main-content').style.display = 'block';
+        loadData(); 
+      } else {
+        document.getElementById('error-msg').style.display = 'block';
+      }
+    }
+
+    function loadData() {
+      google.script.run
+        .withSuccessHandler(displayData)
+        .getLatestAnalysis();
+    }
+
+    function displayData(data) {
+      const textAlign = document.getElementById('analysis-text');
+      textAlign.innerHTML = `
+        <h6 class="alert-heading fw-bold mb-2">最新のAI分析結果 (${data.date})</h6>
+        <p class="small mb-1"><strong>市場感情:</strong> ${data.sentiment} (Score: ${data.score})</p>
+        <hr class="capsule-line my-3">
+        <p class="text-start small mb-0" style="line-height: 1.6;"><strong>AIサマリー:</strong><br>${data.summary}</p>
+      `;
+
+      // トレンドを更新（data.trend_words を使用するように修正）
+      const trendArea = document.getElementById('trend-area');
+      if (data.trend_words) {
+        const tags = data.trend_words.split(',').map(tag => 
+          `<span class="badge rounded-pill bg-white text-success border m-1 shadow-sm" style="font-weight:normal;">#${tag.trim()}</span>`
+        ).join('');
+        trendArea.innerHTML = tags;
+      }
+
+      // グラフ描画を実行
+      drawChart(data.sentiment, data.score);
+    }
+
+    function drawChart(sentiment, score) {
+      const posValue = parseFloat(score) || 0;
+      const negValue = Math.max(0, 1 - posValue);
+
+      const chartData = google.visualization.arrayToDataTable([
+        ['感情', 'スコア'],
+        ['ポジティブ', posValue],
+        ['ネガティブ/その他', negValue]
+      ]);
+
+      const options = {
+        pieHole: 0.5,
+        colors: sentiment === 'positive' ? ['#28a745', '#e9ecef'] : ['#dc3545', '#e9ecef'],
+        pieSliceText: 'percentage',
+        pieSliceTextStyle: { color: 'black', fontSize: 12 },
+        chartArea: { width: '90%', height: '70%' },
+        legend: { position: 'bottom', alignment: 'center' },
+        backgroundColor: 'transparent',
+        animation: { startup: true, duration: 800, easing: 'out' }
+      };
+
+      const chartElement = document.getElementById('sentiment-chart');
+      if (chartElement) {
+        const chart = new google.visualization.PieChart(chartElement);
+        chart.draw(chartData, options);
+      }
+    }
+
+    function logout() {
+      document.getElementById('main-content').style.display = 'none';
+      document.getElementById('login-screen').style.display = 'flex';
+      document.getElementById('user').value = '';
+      document.getElementById('pass').value = '';
+    }
+
+    // エンターキー対応
+    document.getElementById('user').addEventListener('keypress', e => { if (e.key === 'Enter') checkLogin(); });
+    document.getElementById('pass').addEventListener('keypress', e => { if (e.key === 'Enter') checkLogin(); });
+  
+  </script>
+  </body>
+</html>
