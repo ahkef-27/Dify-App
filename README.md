@@ -70,6 +70,12 @@ index.html により、以下の機能を備えた専用UIを提供します。
 
 ハッシュタグ・タグクラウド: AIが抽出した trend_words を動的に生成し、キーワードの熱量を視覚化
 
+### ログイン画面
+![Execution Log](Images/Login.png)
+
+### ダッシュボード画面
+![Execution Log](Images/Result.png)
+
 ## 4. 重複排除
 
 URL列をピンポイントで照合し、trim()（空白削除）を徹底。同一記事を二度AIに投げない設計です。
@@ -177,12 +183,6 @@ Security: ScriptProperties API / シンプルな認証プロトコル
 ### ✨ インサイトを可視化する：専用 Web ダッシュボード
 
 index.html は、AIによる高度な分析結果を、専門的な知識がなくても直感的に理解できるように設計された専用インターフェースです。
-
-### ログイン画面
-![Execution Log](Images/Login.png)
-
-### ダッシュボード画面
-![Execution Log](Images/Result.png)
 
 ## 🌿 データの安全性を高めるアクセス設計
 
