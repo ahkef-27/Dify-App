@@ -17,7 +17,7 @@ https://docs.google.com/spreadsheets/d/1KqABS5Blonfm2scCW89rhnLx7ChabJR5iRGuiJ9t
 ## Dify-App: Auto Research & Analysis System
 ## Web情報収集・LLM分析・可視化を統合した自律型インテリジェンス・プラットフォーム
 
-Google Apps Script (GAS) と Dify (LLM Workflow) を高度に連携させ、特定トピックに関する最新情報の収集から、多角的なAI分析、そしてレポーティングまでを完全無人化した資産運用型リサーチシステムです。
+Google Apps Script (GAS) と Dify (LLM Workflow) を連携させ、特定トピックに関する最新情報の収集から、多角的なAI分析、そしてレポーティングまでを完全無人化した資産運用型リサーチシステムです。
 
 ユーザーがキーワードを一度設定するだけで、
 
