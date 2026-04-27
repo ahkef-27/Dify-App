@@ -133,13 +133,13 @@ URLをピンポイントで照合し、同一記事を二度AIに投げない設
 
 ## 🛠 技術仕様 (Tech Stack)
 
-Backend: Google Apps Script (GAS)
+#### Backend: Google Apps Script (GAS)
 
-AI Orchestration: Dify Workflow API
+#### AI Orchestration: Dify Workflow API
 
-Frontend: HTML5 / CSS3 (Bootstrap 5.3) / Google Charts
+#### Frontend: HTML5 / CSS3 (Bootstrap 5.3) / Google Charts
 
-Security: ScriptProperties API / シンプルな認証プロトコル
+#### Security: ScriptProperties API / シンプルな認証プロトコル
 
 ---
 
