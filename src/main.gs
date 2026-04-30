@@ -363,7 +363,7 @@ function getLatestAnalysis() {
   const rowData = sheet.getRange(lastRow, 1, 1, 7).getValues()[0];
   
   // 2. 🚨【ここが重要】日付を「ただの文字列」として、GAS側でガチガチに固定して作る
-  // Utilities.formatDate を使い、ブラウザに「計算」させる隙を与えません。
+  // Utilities.formatDate を使い、ブラウザに「計算」させる隙を与えません
   const fixedDateStr = Utilities.formatDate(new Date(rowData[0]), "JST", "yyyy/MM/dd HH:mm:ss");
   
   return {
