@@ -6,9 +6,11 @@
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <style>
       /* 全体レイアウト：清潔感のある背景色を設定 */
-      body { background-color: #f8f9fa; }
+      body { 
+        background-color: #f8f9fa; 
+      }
 
-      /* データ表示エリア：視認性とモダンさを両立したカードデザイン */
+      /* データ表示エリア */
       #data-area {
         border-radius: 20px !important; /* 角を丸くし、親しみやすいUIに */
         border: 1.5px solid rgba(40, 167, 69, 0.2) !important;
@@ -22,14 +24,28 @@
         background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
         z-index: 9999; display: flex; align-items: center; justify-content: center;
       }
-      .login-card { width: 100%; max-width: 400px; padding: 30px; border-radius: 20px; box-shadow: 0 10px 25px rgba(0,0,0,0.2); }
+
+      .login-card { 
+        width: 100%; 
+        max-width: 400px; 
+        padding: 30px; 
+        border-radius: 20px; 
+        box-shadow: 0 10px 25px rgba(0,0,0,0.2); 
+      }
+
       #main-content { 
         display: none; 
         padding: 20px 20px; 
         max-width: 1200px;  /* 画面を広く使う */
         margin: 0 auto;
       }
-      .dashboard-card { border-radius: 15px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); border: none; padding: 1.0rem !important; }
+
+      .dashboard-card { 
+        border-radius: 15px; 
+        box-shadow: 0 4px 6px rgba(0,0,0,0.1); 
+        border: none; 
+        padding: 1.0rem 1.5rem !important;
+      }
 
       .chart-container {
         display: flex;
@@ -41,20 +57,19 @@
 
       /* セパレーター：デザインのアクセントとして丸みのあるラインを採用 */
       #sentiment-chart { 
-      width: 100%;
-      max-width: 320px; /* グラフが広がりすぎないように「横幅の最大値」を固定 */
-      height: 220px;
+        width: 100%;
+        max-width: 320px; /* グラフが広がりすぎないように「横幅の最大値」を固定 */
+        height: 230px;
       }
 
       /* styleタグ内に追加 */
-      capsule-line {
-      border: none;
-      height: 6px;
-      background-color: #28a745;
-      border-radius: 10px; /* ここで「丸」にする */
-      width: 40%;
-      margin: 20px auto !important;
-      opacity: 0.2;
+      .capsule-line {
+        border: none;
+        height: 1px;
+        background-color: #dee2e6;
+        width: 80%;
+        margin: 10px auto !important;
+        opacity: 0.8;
       }
 
       /* styleタグ内に追加 */
@@ -70,8 +85,8 @@
       }
     </style>
   </head>
-  <body>
 
+  <body>
     <div id="login-screen">
       <div class="card login-card text-center">
         <h3 class="mb-4">Client Login</h3>
@@ -87,17 +102,14 @@
     </div>
 
     <div id="main-content" class="container">
-      <div class="card dashboard-card p-4 text-center">
-        <h1 class="display-5 text-primary mb-4">AIリサーチ・ダッシュボード</h1>
-    
+      <div class="card dashboard-card p-3 pt-2 text-center">
+        <h1 class="h3 text-primary mb-2">AIリサーチ・ダッシュボード</h1>
         <div id="data-area" class="alert alert-success p-4 mb-0" style="border-radius: 25px !important;">
           <div id="analysis-text">データを読み込んでいます...</div>
-      
-          <hr class="capsule-line my-4"> 
+          <hr class="capsule-line my-2"> 
           <div class="chart-container">
             <div id="sentiment-chart"></div>
           </div>
-
           <div id="trend-area" class="mt-3"></div>
         </div>
         <button class="btn btn-outline-secondary mt-4" onclick="logout()">ログアウト</button>
@@ -163,13 +175,14 @@
         colors: sentiment === 'positive' ? ['#28a745', '#e9ecef'] : ['#dc3545', '#e9ecef'],
         pieSliceText: 'percentage',
         pieSliceTextStyle: { color: 'black', fontSize: 12 },
-        chartArea: { width: '90%', height: '70%' },
+        chartArea: { width: '100%', height: '90%' },
         legend: { position: 'bottom', alignment: 'center' },
         backgroundColor: 'transparent',
         animation: { startup: true, duration: 800, easing: 'out' }
       };
 
       const chartElement = document.getElementById('sentiment-chart');
+
       if (chartElement) {
         const chart = new google.visualization.PieChart(chartElement);
         chart.draw(chartData, options);
