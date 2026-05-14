@@ -77,7 +77,7 @@ index.html により、以下の機能を備えた専用UIを提供します。
 
 AIによって構造化された最新の分析レポートを表示します。
 
-![Execution Log](Images/Result.png)
+![Execution Log](Images/ResultData.png)
 
 ### 📊 実行ログとデータの整合性について
 
