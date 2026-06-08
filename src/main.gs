@@ -99,11 +99,6 @@ function filterNewResults(googleData) {
   // シートが空（ヘッダーのみ）の場合は、すべての検索結果を新規として扱う
   if (lastRow < 2) return googleData; 
 
-  /* --- 旧ロジック（URL列の指定ミスと空白判定を修正するためコメントアウト） ---
-  const existingUrls = lastRow < 2 ? [] : sheet.getRange(2, 3, lastRow - 1, 1).getValues().flat();
-  return googleData.filter(item => !existingUrls.includes(item.url));
-  -------------------------------------------------------------------------- */
-
   // 新ロジック：URL列(4列目)を正確に取得し、空白を除去して判定
   const existingUrls = sheet.getRange(2, 4, lastRow - 1, 1).getValues().flat(); 
   
