@@ -339,6 +339,7 @@ function writeLog(func, status, message) {
 /**
  * GASをWebアプリとして公開した際に、画面（HTML）を表示するための関数
  */
+
 function doGet() {
   // index.html というファイルを表示
   return HtmlService.createHtmlOutputFromFile('index');
