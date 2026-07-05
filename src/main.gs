@@ -316,7 +316,6 @@ function formatSheets() {
 /**
  * 実行状況を「ログ」シートに記録する関数
  */
-
 function writeLog(func, status, message) {
   const ss = SpreadsheetApp.getActive();
   const sheet = ss.getSheetByName("ログ");
@@ -354,11 +353,10 @@ function getLatestAnalysis() {
   
   if (lastRow < 2) return { summary: "データがまだありません。" };
 
-  // 1. まずは全データを取得
+  // 1.まずは全データを取得
   const rowData = sheet.getRange(lastRow, 1, 1, 7).getValues()[0];
   
-  // 2. 🚨【ここが重要】日付を「ただの文字列」として、GAS側でガチガチに固定して作る
-  // Utilities.formatDate を使い、ブラウザに「計算」させる隙を与えません
+  // 2.【ここが重要】日付を「ただの文字列」として、GAS側でガチガチに固定して作る
   const fixedDateStr = Utilities.formatDate(new Date(rowData[0]), "JST", "yyyy/MM/dd HH:mm:ss");
   
   return {
