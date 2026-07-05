@@ -122,6 +122,7 @@ function buildDifyInputFromData(dataList) {
  * @param {number} startIndex 取得開始位置（1, 11, 21...）
  * @returns {Array} 取得した検索結果の配列
  */
+
 function fetchGoogleResults(keyword, startIndex = 1) { 
   // キーワードが空なら空の配列を返して安全に終わる
   if (!keyword || String(keyword).trim() === "") {
@@ -316,6 +317,7 @@ function formatSheets() {
 /**
  * 実行状況を「ログ」シートに記録する関数
  */
+
 function writeLog(func, status, message) {
   const ss = SpreadsheetApp.getActive();
   const sheet = ss.getSheetByName("ログ");
@@ -346,6 +348,7 @@ function doGet() {
  * Webダッシュボード（フロントエンド）から呼び出され、最新の分析結果を返す関数
  * @returns {Object} 最新の分析結果データ
  */
+
 function getLatestAnalysis() {
   const ss = SpreadsheetApp.getActive();
   const sheet = ss.getSheetByName("AI分析");
@@ -398,6 +401,7 @@ function sendSlack(message) {
  * 初回設定用：各種APIキーをスクリプトプロパティに安全に保存する関数
  * ※一度実行したら、コード内の生キーは削除してOK
  */
+
 function setFinalSecrets() {
   const props = PropertiesService.getScriptProperties();
 
