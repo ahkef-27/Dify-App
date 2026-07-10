@@ -206,12 +206,3 @@ index.html は、AIによる高度な分析結果を、専門的な知識がな�
 ### Password: demo
 
 ---
-
-## ⚖️ ライセンス
-
-### MIT License
-
-"From Data to Information, from Information to Insight."
-
-散らばった情報を整理し、AIを活用して次のアクションを見出す。
-複雑なビジネス課題を解き明かす、一つのツールとしてお役立てください。
