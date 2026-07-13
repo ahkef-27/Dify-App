@@ -269,7 +269,7 @@ function saveAIAnalysis(summaryText) {
     const rowData = [
       now, // A: 日時
       finalData.sentiment || "不明", // B: ポジネガ
-      finalData.emotion_score || 0, // C: スコア
+      finalData.score || 0, // C: スコア
       Array.isArray(finalData.trend_words) ? finalData.trend_words.join(", ") : (finalData.trend_words || ""), // D: トレンド
       `強み: ${finalData.competitor_analysis?.strengths || ""}\n弱み: ${finalData.competitor_analysis?.weaknesses || ""}`, // E: 競合
       finalData.summary || "", // F: サマリー
