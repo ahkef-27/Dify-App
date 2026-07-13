@@ -142,7 +142,7 @@
       const textAlign = document.getElementById('analysis-text');
       textAlign.innerHTML = `
         <h6 class="alert-heading fw-bold mb-2">最新のAI分析結果 (${data.date})</h6>
-        <p class="small mb-1"><strong>市場感情:</strong> ${data.sentiment} (Score: ${data.score})</p>
+        <p class="small mb-1"><strong>市場感情:</strong> ${data.sentiment} (Score: ${data.score}%)</p>
         <hr class="capsule-line my-3">
         <p class="text-start small mb-0" style="line-height: 1.6;"><strong>AIサマリー:</strong><br>${data.summary}</p>
       `;
@@ -161,8 +161,8 @@
     }
 
     function drawChart(sentiment, score) {
-      const posValue = parseFloat(score) || 0;
-      const negValue = Math.max(0, 1 - posValue);
+      const posValue = parseFloat(score) || 0 ;
+      const negValue = Math.max(0, 100 - posValue);
 
       const chartData = google.visualization.arrayToDataTable([
         ['感情', 'スコア'],
