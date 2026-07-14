@@ -147,16 +147,16 @@ JST Timezone Lock: 日本標準時での固定出力により、報告資料と�
 
 #### main.gs	リサーチ・分析・通知を司るコアロジック
 
-### 設定	検索キーワードや実行頻度の管理
+### 設定 シート	検索キーワードや実行頻度の管理
 ![Execution Log](Images/Settings.png)
 
-### 生データ	収集したWeb記事のバックアップ ＆ 重複チェック用DB
+### 生データ シート	収集したWeb記事のバックアップ ＆ 重複チェック用DB
 ![Execution Log](Images/Data.png)
 
-### AI分析	Difyが生成した構造化データの蓄積
+### AI分析 シート	Difyが生成した構造化データの蓄積
 ![Execution Log](Images/Analysis.png)
 
-### ログ	実行状況およびエラー履歴の管理
+### ログ シート	実行状況およびエラー履歴の管理
 ![Execution Log](Images/Log.png)
 
 ### index.html	シンプルなUIを備えた、分析結果のWebダッシュボード
