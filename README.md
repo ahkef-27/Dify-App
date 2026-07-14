@@ -123,21 +123,21 @@ JST Timezone Lock: 日本標準時での固定出力により、報告資料と�
 
 ### 関数名  タイミング	 役割
 
-#### main  毎日 3:00 - 4:00  リサーチ・排除・AI分析・Slack通知の全工程を完遂
+#### main関数  毎日 3:00 - 4:00  リサーチ・排除・AI分析・Slack通知の全工程を完遂
 
-#### getLatestAnalysis  常時 (Webアクセス時)  Webダッシュボードへ最新の分析結果を配信
+#### getLatestAnalysis関数  常時 (Webアクセス時)  Webダッシュボードへ最新の分析結果を配信
 
 ---
 
 ## 🛠 技術仕様 (Tech Stack)
 
-#### Backend: Google Apps Script (GAS)
+#### AI オーケストレーション: Dify Workflow API
 
-#### AI Orchestration: Dify Workflow API
+#### フロントエンド: HTML5 / CSS3 (Bootstrap 5.3) / Google Charts
 
-#### Frontend: HTML5 / CSS3 (Bootstrap 5.3) / Google Charts
+#### バックエンド: Google Apps Script (GAS)
 
-#### Security: ScriptProperties API / シンプルな認証プロトコル
+#### セキュリティ: ScriptProperties API / シンプルな認証プロトコル
 
 ---
 
