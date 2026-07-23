@@ -1,7 +1,7 @@
 # Dify-App
 
 ## Dify-App: Auto Research & Analysis System
-## Web情報収集・LLM分析・可視化を統合した自律型インテリジェンス・プラットフォーム
+## Difyで作る！Webリサーチ・AI分析・ダッシュボードの全自動化
 
 ### 🔗 Live Demo (公開検証用)
 
