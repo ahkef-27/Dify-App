@@ -193,11 +193,24 @@ function callDifyAI(inputText) {
 
   const response = UrlFetchApp.fetch(url, options);
   const resText = response.getContentText();
-  const json = JSON.parse(resText);
+  const responseCode = response.getResponseCode();
+
+  // 1. ステータスコードチェック（200以外をガード）
+  if (responseCode !== 200) {
+    return "API通信エラー (Status: " + responseCode + "): " + resText;
+  }
+
+  // 2. try-catchによる安全なJSON解析
+  let json;
+  try {
+    json = JSON.parse(resText);
+  } catch (e) {
+    return "JSON解析エラー (非JSON形式のレスポンス): " + resText;
+  }
 
   // Difyのレスポンス構造に合わせてデータを抽出
   if (json.data && json.data.outputs) {
-  return json.data.outputs.text || json.data.outputs.result || JSON.stringify(json.data.outputs);
+    return json.data.outputs.text || json.data.outputs.result || JSON.stringify(json.data.outputs);
   }
   
   return "解析エラー: " + resText;
