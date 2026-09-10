@@ -195,25 +195,17 @@ function callDifyAI(inputText) {
   const resText = response.getContentText();
   const responseCode = response.getResponseCode();
 
-  // 1. ステータスコードチェック（200以外をガード）
+  // レスポンスコードが200以外の時（Cloudflareエラー等）のガード
   if (responseCode !== 200) {
     return "API通信エラー (Status: " + responseCode + "): " + resText;
   }
 
-  // 2. try-catchによる安全なJSON解析
+  // JSON解析の安全性確保
   let json;
   try {
     json = JSON.parse(resText);
   } catch (e) {
     return "JSON解析エラー (非JSON形式のレスポンス): " + resText;
-  }
-
-  // Difyのレスポンス構造に合わせてデータを抽出
-  if (json.data && json.data.outputs) {
-    return json.data.outputs.text || json.data.outputs.result || JSON.stringify(json.data.outputs);
-  }
-  
-  return "解析エラー: " + resText;
 }
 
 /**
